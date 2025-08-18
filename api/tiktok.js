@@ -1,4 +1,5 @@
-import axios from 'axios';
+const axios = require("axios");
+
 
 const followRedirect = async (shortUrl) => {
   try {
@@ -111,4 +112,5 @@ const handler = async (req, res) => {
   }
 };
 
-export default handler;
+module.exports = handler;
+
