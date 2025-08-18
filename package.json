@@ -1,8 +1,11 @@
 {
   "name": "snaptik.pics",
   "version": "1.0.0",
+  "type": "module",
   "main": "main.js",
   "scripts": {
+    "dev": "vercel dev",
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,3 +16,4 @@
     "axios": "^1.11.0"
   }
 }
+
