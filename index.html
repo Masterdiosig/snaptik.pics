@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-  <div class="logo"></div>
+  <div class="logo">Snaptik.rest</div>
   <div class="menu">&#9776;</div>
 </header>
 
@@ -33,10 +33,23 @@
       <span>All Devices</span>
       <span>100% Free</span>
     </div>
-    <div class="search-box">
-      <input type="text" placeholder="Paste a TikTok video link here...">
-      <button>DOWNLOAD</button>
-    </div>
+ <div class="search-box">
+  <input 
+    id="hf_urli" 
+    type="text" 
+    placeholder="Paste a TikTok video link here..."
+  >
+  <button id="submit">DOWNLOAD</button>
+</div>
+
+<!-- Khung báo lỗi -->
+<div id="error-inline" style="display:none; color:red; margin-top:10px;">
+  <span id="error-inline-msg"></span>
+</div>
+
+<!-- Kết quả hiển thị video tải xuống -->
+<div id="result" style="margin-top:20px;"></div>
+
     <p class="note">By using our services, you accept our <a href="#">Terms</a>.</p>
   </section>
 
