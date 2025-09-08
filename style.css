@@ -61,6 +61,7 @@ header {
   padding: 12px;
   border: none;
   outline: none;
+  font-size: 16px;
 }
 
 .search-box button {
@@ -182,7 +183,6 @@ footer .links a:hover {
   color: #ff3b5c;
 }
 
-/* Sidebar Menu */
 .sidebar {
   position: fixed;
   top: 0;
@@ -216,7 +216,6 @@ footer .links a:hover {
   background: #ff3b5c;
 }
 
-/* Overlay */
 .overlay {
   position: fixed;
   top: 0;
@@ -228,13 +227,16 @@ footer .links a:hover {
   z-index: 999;
 }
 
-/* Sidebar active */
 .sidebar.active {
   left: 0;
 }
 
 .overlay.active {
   display: block;
+}
+
+input, textarea {
+  font-size: 16px;
 }
 
 
