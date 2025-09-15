@@ -48,7 +48,7 @@ app.post("/api/tiktok", async (req, res) => {
         },
       }
     );
-
+console.log("📦 RapidAPI response:", JSON.stringify(apiRes.data, null, 2));
     const data = apiRes.data?.data || {};
     const hdNoLogo = data.hdplay;
     const sdNoLogo = data.play;
