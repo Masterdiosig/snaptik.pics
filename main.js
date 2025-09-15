@@ -2,29 +2,12 @@ const menuBtn = document.querySelector('.menu');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
 
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    item.classList.toggle('active');
-  });
-});
-
-menuBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('active');
-  overlay.classList.toggle('active');
-});
-
-overlay.addEventListener('click', () => {
-  sidebar.classList.remove('active');
-  overlay.classList.remove('active');
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("tiktokUrl");
   const resultBox = document.getElementById("resultBox");
 
   function showErrorInline(message) {
-    alert(message);
+    alert(message); 
   }
 
   document.getElementById("downloadForm").addEventListener("submit", async (e) => {
@@ -50,27 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await res.json();
 
       if (data.code === 0 && data.data.length > 0) {
-        resultBox.innerHTML = ''; 
+        resultBox.innerHTML = '';
         for (const item of data.data) {
           const btn = document.createElement("button");
           btn.textContent = item.label;
           btn.style = "display:block;margin:10px 0;padding:10px;background:#007bff;color:#fff;border:none;border-radius:6px;cursor:pointer;";
 
-          btn.onclick = async () => {
-            try {
-              const response = await fetch(`/api/download?url=${encodeURIComponent(item.url)}`);
-              const blob = await response.blob();
-
-              const a = document.createElement('a');
-              a.href = URL.createObjectURL(blob);
-              a.download = "video.mp4";
-              document.body.appendChild(a);
-              a.click();
-              document.body.removeChild(a);
-            } catch (err) {
-              console.error("Lỗi tải video:", err);
-              showErrorInline("Không tải được video.");
-            }
+          btn.onclick = () => {
+            window.location.href = `/api/download?url=${encodeURIComponent(item.url)}`;
           };
 
           resultBox.appendChild(btn);

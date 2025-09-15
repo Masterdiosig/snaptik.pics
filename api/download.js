@@ -12,11 +12,9 @@ app.get("/api/download", async (req, res) => {
 
     res.setHeader("Content-Type", "video/mp4");
     res.setHeader("Content-Disposition", 'attachment; filename="video.mp4"');
-
     response.data.pipe(res);
   } catch (err) {
     console.error("❌ Lỗi tải:", err.message);
     res.status(500).send("Không tải được video.");
   }
 });
-
