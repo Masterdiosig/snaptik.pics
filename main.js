@@ -1,18 +1,33 @@
+const menuBtn = document.querySelector('.menu');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    item.classList.toggle('active');
+  });
+});
+
+menuBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+  overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('active');
+  overlay.classList.remove('active');
+});
+
 document.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("hf_urli");
-  const resultBox = document.getElementById("result");
+  const input = document.getElementById("tiktokUrl");
+  const resultBox = document.getElementById("resultBox");
 
   function showErrorInline(message) {
-    const box = document.getElementById("error-inline");
-    const msg = document.getElementById("error-inline-msg");
-    msg.textContent = message;
-    box.style.display = "block";
-    setTimeout(() => {
-      box.style.display = "none";
-    }, 4000);
+    alert(message);
   }
 
-  document.getElementById("submit").addEventListener("click", async (e) => {
+  document.getElementById("downloadForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const tiktokUrl = input.value.trim();
 
@@ -27,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer my_super_secret_token_123' // đổi nếu bạn dùng token khác
+          'Authorization': 'Bearer my_super_secret_token_123'
         },
         body: JSON.stringify({ url: tiktokUrl })
       });
@@ -35,8 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await res.json();
 
       if (data.code === 0 && data.data.length > 0) {
-        resultBox.innerHTML = ''; // clear cũ
-
+        resultBox.innerHTML = ''; 
         for (const item of data.data) {
           const btn = document.createElement("button");
           btn.textContent = item.label;
@@ -49,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
               const a = document.createElement('a');
               a.href = URL.createObjectURL(blob);
-              a.download = "video.mp4"; // có thể dùng item.label nếu muốn tên riêng
+              a.download = "video.mp4";
               document.body.appendChild(a);
               a.click();
               document.body.removeChild(a);
