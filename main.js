@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultBox = document.getElementById("resultBox");
 
   function showErrorInline(message) {
-    alert(message); 
+    alert(message);
   }
 
   document.getElementById("downloadForm").addEventListener("submit", async (e) => {
@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
         for (const item of data.data) {
           const btn = document.createElement("button");
           btn.textContent = item.label;
-          btn.style = "display:block;margin:10px 0;padding:10px;background:#007bff;color:#fff;border:none;border-radius:6px;cursor:pointer;";
 
+          // 🚀 Redirect thẳng → iOS sẽ hiện popup Download
           btn.onclick = () => {
             window.location.href = `/api/download?url=${encodeURIComponent(item.url)}`;
           };
