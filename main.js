@@ -27,14 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch('/api/tiktok', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer my_super_secret_token_123'
-        },
-        body: JSON.stringify({ url: tiktokUrl })
-      });
+      const res = await fetch(`/api/tiktok?url=${encodeURIComponent(tiktokUrl)}&token=my_super_secret_token_123`);
+
 
       const data = await res.json();
 
